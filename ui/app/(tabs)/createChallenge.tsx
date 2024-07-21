@@ -1,5 +1,5 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { StyleSheet, Image, Platform } from 'react-native';
+import { StyleSheet, Image, Platform, NativeSyntheticEvent } from 'react-native';
 
 import { Accordion } from '@/common/Accordion';
 import { LinkExternal } from '@/common/LinkExternal';
@@ -7,9 +7,26 @@ import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { Typography } from '@/common/Typography';
 import { Card } from '@/common/Card';
 import { InputText } from '@/common/InputText';
-import {CreateTask} from '@/components/Tasks/createTask';
+import { useState } from 'react';
+import PrimaryButton from '@/common/Button';
 
 export default function CreateChallenge() {
+  type ITask = {
+    id: number,
+    text: string,
+  };
+
+  const [challengeName, setChallengeName] = useState('');
+  const [challengeLength, setChallengelength] = useState('');
+
+  const [tasks, setTasks] = useState<Array<ITask>>([]);
+  const [task, setTask] = useState('');
+
+  const addTask = ():void => {
+    setTask('');
+    setTasks([{id:tasks.length,text:task}, ...tasks]);
+  };
+  
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}>
@@ -17,33 +34,23 @@ export default function CreateChallenge() {
         <Typography type="title">Create Challenge</Typography>
       </Card>
       <Card>
-        <InputText placeholder="Name your challenge" />
-        <InputText placeholder="how many days" />
+        <InputText placeholder="Name your challenge" onChangeText={(text)=>setChallengeName(text)} />
+        <InputText keyboardType="numeric" placeholder="how many days" onChangeText={(number)=>setChallengelength(number)} />
       </Card>
       {/*
         TODO: Create a task. Show an input field, with an icon.
               when icon is clicked, whatever was enter into input field
               gets added into list of tasks to show below
       */}
-      <CreateTask />
-      <Typography>
-        testing some application behaviours below:
-      </Typography>
-      <Accordion title="File-based routing">
-        <Typography>
-          This app has 4 views:{' '}
-          <Typography type="defaultSemiBold">app/(tabs)/index.tsx</Typography> and{' '}
-          <Typography type="defaultSemiBold">app/(tabs)/createChallenge.tsx</Typography> and{' '}
-          <Typography type="defaultSemiBold">app/(pages)/daily.tsx</Typography> and{' '}
-          <Typography type="defaultSemiBold">app/(pages)/challenge.tsx</Typography>
-        </Typography>
-        <Typography>
-          The layout file in <Typography type="defaultSemiBold">app/(tabs)/_layout.tsx</Typography>{' '}
-          sets up the tab navigator.
-        </Typography>
-        <LinkExternal href="https://docs.expo.dev/router/introduction">
-          <Typography type="link">Learn more</Typography>
-        </LinkExternal>
+      <Card>
+        <InputText placeholder='create new task' onChangeText={(text)=>setTask(text)} value={task} />
+        <PrimaryButton title='Add task' onPress={()=>addTask()} />
+      </Card>
+      <Accordion title={`List of tasks for ${challengeName?challengeName:'new challenge'}`}>
+        {challengeLength && (<Typography type="defaultSemiBold">Committing myself to the following tasks for {challengeLength} days</Typography>)}
+        {
+          tasks.map(item => item && (<Typography key={item.id}>{item?.text}</Typography>))
+        }
       </Accordion>
     </ParallaxScrollView>
   );

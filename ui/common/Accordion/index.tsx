@@ -21,7 +21,7 @@ export function Accordion({ children, title }: PropsWithChildren & { title: stri
           size={18}
           color={theme === 'light' ? Colors.light.icon : Colors.dark.icon}
         />
-        <Typography type="defaultSemiBold">{title}</Typography>
+        <Typography type="subtitle">{title}</Typography>
       </TouchableOpacity>
       {isOpen && <Card style={styles.content}>{children}</Card>}
     </Card>

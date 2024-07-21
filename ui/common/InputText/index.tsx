@@ -10,7 +10,7 @@ export function InputText({
   ...rest
 }: IInputTextProps) {
   return (
-    <TextInput placeholder={placeholder} style={styles.input} />
+    <TextInput placeholder={placeholder} style={styles.input} {...rest} />
   );
 };
 
