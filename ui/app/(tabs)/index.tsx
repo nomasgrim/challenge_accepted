@@ -1,23 +1,18 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { ThemedInput } from '@/components/ThemedInput';
+import { InternalLink } from '@/common/InternalLink';
 
 export default function HomeScreen() {
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
+    >
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Challenege Accepted</ThemedText>
+        <ThemedText type="title">Challenge Accepted</ThemedText>
       </ThemedView>
            
       <ThemedView style={styles.stepContainer}>
@@ -29,7 +24,7 @@ export default function HomeScreen() {
         <ThemedInput placeholder="password" />
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Create your Challenege & Tasks</ThemedText>
+        <ThemedText type="subtitle">Step 2: Create your Challenge & Tasks</ThemedText>
         <ThemedText>
           You will name your challenge and define how long you will stay commited to it.
         </ThemedText>
@@ -37,10 +32,21 @@ export default function HomeScreen() {
           You will create the tasks that you are committing yourself to everyday.
         </ThemedText>
       </ThemedView>
+      <ThemedView>
+        <ThemedText type="link">
+          <InternalLink href="/createChallenge" text="Create Challange" />
+        </ThemedText>
+      </ThemedView>
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Step 3: Accept your Challenge</ThemedText>
         <ThemedText>
           This is the commitment to yourself, to complete the tasks you just made, every single day! Now manage it.
+        </ThemedText>
+        <ThemedText type="link">
+          <InternalLink href="/daily" text="Daily View" />
+        </ThemedText>
+        <ThemedText type="link">
+          <InternalLink href="/challenge" text="Challenge View" />
         </ThemedText>
       </ThemedView>
     </ParallaxScrollView>
@@ -56,12 +62,5 @@ const styles = StyleSheet.create({
   stepContainer: {
     gap: 8,
     marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
+  }
 });
