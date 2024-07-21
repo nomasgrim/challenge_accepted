@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
-import { ThemedInput } from '@/components/ThemedInput';
+import { InputText } from '@/common/InputText';
 import { InternalLink } from '@/common/InternalLink';
 
 export default function HomeScreen() {
@@ -20,8 +20,8 @@ export default function HomeScreen() {
         <ThemedText>
           Create an account to associate all your challenges and daily tasks to. Or login below with your credentials
         </ThemedText>
-        <ThemedInput placeholder="username" />
-        <ThemedInput placeholder="password" />
+        <InputText placeholder="username" />
+        <InputText placeholder="password" />
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Step 2: Create your Challenge & Tasks</ThemedText>
