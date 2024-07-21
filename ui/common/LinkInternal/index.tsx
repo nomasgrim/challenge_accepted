@@ -5,7 +5,7 @@ export type ILink = {
   text:string,
 }
 
-export const InternalLink = ({href, text}:ILink) => {
+export const LinkInternal = ({href, text}:ILink) => {
   return (
     <Link href={href}>{text}</Link>
   );

@@ -1,17 +1,17 @@
 import BouncyCheckbox from "react-native-bouncy-checkbox";
-import { ThemedText } from "./ThemedText";
+import { Typography } from "../Typography";
 
-export type IThemedChecbox = {
+export type IRadioProps = {
   text: string,
 }
 
-export const ThemedCheckbox = ({
+export const RadioButton = ({
   text,
-}:IThemedChecbox) => {
+}:IRadioProps) => {
   return (
-    <ThemedText>
+    <Typography>
       <BouncyCheckbox text={text} onPress={(isChecked: boolean) => {}} />
       {text}
-    </ThemedText>
+    </Typography>
   )
 }
