@@ -64,8 +64,5 @@ const styles = StyleSheet.create({
   stepContainer: {
     gap: 8,
     marginBottom: 8,
-    borderColor: '#0f0f0f',
-    borderWidth: 1,
-    borderRadius: 1
   }
 });

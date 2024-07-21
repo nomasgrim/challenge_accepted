@@ -7,6 +7,7 @@ import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { Typography } from '@/common/Typography';
 import { Card } from '@/common/Card';
 import { InputText } from '@/common/InputText';
+import {CreateTask} from '@/components/Tasks/createTask';
 
 export default function CreateChallenge() {
   return (
@@ -17,10 +18,14 @@ export default function CreateChallenge() {
       </Card>
       <Card>
         <InputText placeholder="Name your challenge" />
-      </Card>
-      <Card>
         <InputText placeholder="how many days" />
       </Card>
+      {/*
+        TODO: Create a task. Show an input field, with an icon.
+              when icon is clicked, whatever was enter into input field
+              gets added into list of tasks to show below
+      */}
+      <CreateTask />
       <Typography>
         testing some application behaviours below:
       </Typography>
