@@ -6,7 +6,7 @@ import { ExternalLink } from '@/components/ExternalLink';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
-import { ThemedInput } from '@/components/ThemedInput';
+import { InputText } from '@/common/InputText';
 
 export default function CreateChallenge() {
   return (
@@ -16,10 +16,10 @@ export default function CreateChallenge() {
         <ThemedText type="title">Create Challenge</ThemedText>
       </ThemedView>
       <ThemedView>
-        <ThemedInput placeholder="Name your challenge" />
+        <InputText placeholder="Name your challenge" />
       </ThemedView>
       <ThemedView>
-        <ThemedInput placeholder="how many days" />
+        <InputText placeholder="how many days" />
       </ThemedView>
       <ThemedText>
         testing some application behaviours below:
