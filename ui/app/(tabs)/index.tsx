@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { Typography } from '@/common/Typography';
+import Typography from '@/common/Typography';
 import { Card } from '@/common/Card';
 import { InputText } from '@/common/InputText';
 import { LinkInternal } from '@/common/LinkInternal';

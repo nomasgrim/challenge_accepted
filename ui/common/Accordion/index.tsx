@@ -2,7 +2,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { PropsWithChildren, useState } from 'react';
 import { StyleSheet, TouchableOpacity, useColorScheme } from 'react-native';
 
-import { Typography } from '@/common/Typography';
+import Typography from '@/common/Typography';
 import { Card } from '@/common/Card';
 import { Colors } from '@/constants/Colors';
 

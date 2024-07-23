@@ -1,18 +1,3 @@
-import {
-  Button,
-  type ButtonProps
-} from 'react-native';
-
-type IButtonType = ButtonProps & {
-  text?: string,
-}
-
-const PrimaryButton = ({
-  ...rest
-}:IButtonType) => {
-  return (
-    <Button {...rest} />
-  )
-};
+import PrimaryButton from "./Button";
 
 export default PrimaryButton;
