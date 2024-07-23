@@ -2,7 +2,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { PropsWithChildren, useState } from 'react';
 import { StyleSheet, TouchableOpacity, useColorScheme } from 'react-native';
 
-import { Typography } from '@/common/Typography';
+import Typography from '@/common/Typography';
 import { Card } from '@/common/Card';
 import { Colors } from '@/constants/Colors';
 
@@ -21,7 +21,7 @@ export function Accordion({ children, title }: PropsWithChildren & { title: stri
           size={18}
           color={theme === 'light' ? Colors.light.icon : Colors.dark.icon}
         />
-        <Typography type="defaultSemiBold">{title}</Typography>
+        <Typography type="subtitle">{title}</Typography>
       </TouchableOpacity>
       {isOpen && <Card style={styles.content}>{children}</Card>}
     </Card>

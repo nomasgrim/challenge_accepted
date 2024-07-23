@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { Typography } from '@/common/Typography';
+import Typography from '@/common/Typography';
 import { Card } from '@/common/Card';
 import { InputText } from '@/common/InputText';
 import { LinkInternal } from '@/common/LinkInternal';
@@ -64,8 +64,5 @@ const styles = StyleSheet.create({
   stepContainer: {
     gap: 8,
     marginBottom: 8,
-    borderColor: '#0f0f0f',
-    borderWidth: 1,
-    borderRadius: 1
   }
 });

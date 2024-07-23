@@ -1,5 +1,5 @@
 import BouncyCheckbox from "react-native-bouncy-checkbox";
-import { Typography } from "../Typography";
+import Typography from "../Typography";
 
 export type IRadioProps = {
   text: string,
