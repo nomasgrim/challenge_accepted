@@ -1,28 +1,28 @@
-import { StyleSheet } from 'react-native';
-
-import { Accordion } from '@/common/Accordion';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import Typography from '@/common/Typography';
-import { Card } from '@/common/Card';
-import { InputText } from '@/common/InputText';
 import { useState } from 'react';
-import PrimaryButton from '@/common/Button';
-import { useTaskContext } from '@/hooks/useTaskContext';
+import { StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
 
+import ParallaxScrollView from '@/components/ParallaxScrollView';
+
+import { Accordion } from '@/common/Accordion';
+import PrimaryButton from '@/common/Button';
+import { Card } from '@/common/Card';
+import { InputText } from '@/common/InputText';
+import Typography from '@/common/Typography';
+
+import { useTaskContext } from '@/hooks/useTaskContext';
+
 const CreateChallenge = () => {
-  const { state, dispatch }:any = useTaskContext();
+  const router =  useRouter();
   const [challengeName, setChallengeName] = useState('');
   const [challengeLength, setChallengelength] = useState('');
-
   const [task, setTask] = useState('');
+  const { state, dispatch }:any = useTaskContext();
 
   const addTask = ():void => {
-    console.log(`tasks legnth ${state.tasks.length} & text: ${task}`);
     dispatch( {type: 'ADD_TASK', payload: {id:state.tasks.length, text:task}});
   };
 
-  const router=  useRouter();
   
   return (
     <ParallaxScrollView
