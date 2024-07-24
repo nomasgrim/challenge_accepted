@@ -2,12 +2,12 @@ import { StyleSheet } from 'react-native';
 
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import Typography from '@/common/Typography';
-import { Card } from '@/common/Card';
-import { InputText } from '@/common/InputText';
-import { LinkInternal } from '@/common/LinkInternal';
-import { Icon } from '@/common/Icon';
+import Card from '@/common/Card';
+import InputText from '@/common/InputText';
+import LinkInternal from '@/common/LinkInternal';
+import Icon from '@/common/Icon';
 
-export default function HomeScreen() {
+const HomeScreen = () => {
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
@@ -66,3 +66,5 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   }
 });
+
+export default HomeScreen

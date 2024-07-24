@@ -11,7 +11,7 @@ import { TaskProvider } from '@/hooks/useTaskContext';
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
-export default function RootLayout() {
+const RootLayout = () => {
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
@@ -38,3 +38,5 @@ export default function RootLayout() {
     </TaskProvider>
   );
 }
+
+export default RootLayout;

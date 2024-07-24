@@ -1,13 +1,15 @@
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import ParallaxScrollView from "@/components/ParallaxScrollView";
+
+import Card from "@/common/Card";
+import LinkInternal from '@/common/LinkInternal';
+import RadioButton from '@/common/Radio';
 import Typography from "@/common/Typography";
-import { Card } from "@/common/Card";
-import { LinkInternal } from '@/common/LinkInternal';
-import { RadioButton } from '@/common/Radio';
+
 import { useTaskContext } from '@/hooks/useTaskContext';
 
-export default function DailyView(){
+const DailyView = () => {
  const {state}:any = useTaskContext();
  return (
   <ParallaxScrollView
@@ -49,3 +51,5 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   }
 });
+
+export default DailyView;
