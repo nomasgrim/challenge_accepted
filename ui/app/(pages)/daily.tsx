@@ -1,39 +1,41 @@
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import ParallaxScrollView from "@/components/ParallaxScrollView";
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
-import { InternalLink } from '@/common/InternalLink';
-import { ThemedCheckbox } from '@/components/ThemedCheckbox';
 
-export default function DailyView(){
+import Card from "@/common/Card";
+import LinkInternal from '@/common/LinkInternal';
+import RadioButton from '@/common/Radio';
+import Typography from "@/common/Typography";
+
+import { useTaskContext } from '@/hooks/useTaskContext';
+
+const DailyView = () => {
+ const {state}:any = useTaskContext();
  return (
   <ParallaxScrollView
   headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}>
-    <ThemedView style={styles.titleContainer}>
-      <ThemedText type="title">Daily View</ThemedText>
-    </ThemedView>
-    <ThemedView style={styles.bodyContainer}>
-      <ThemedText type="subtitle">Start componts for daily view</ThemedText>
-    </ThemedView>
-    <ThemedView>
-      <ThemedText>
-        <ThemedCheckbox text="start tasking out the project" />
-      </ThemedText>
-    </ThemedView>
-    <ThemedView>
-      <ThemedText>
-        <ThemedCheckbox text="document whats left" />
-      </ThemedText>
-    </ThemedView>
-    <ThemedView>
-      <ThemedText type="link">
-        <InternalLink href="/challenge" text="view the challenge" />
-      </ThemedText>
-      <ThemedText type="link">
-        <InternalLink href="/(tabs)" text="return home" />
-      </ThemedText>
-    </ThemedView>
+    <Card style={styles.titleContainer}>
+      <Typography type="title">Daily View</Typography>
+    </Card>
+    <Card>
+      <Typography>THIS LIST COMES FROM CREATE CHALLENGE VIEW</Typography>
+        { 
+          state &&
+          state.tasks.map((item:any) => item && (
+            <Typography key={item.id}>
+              <RadioButton text={item.text} />
+            </Typography>
+          ))
+        } 
+    </Card>
+    <Card>
+      <Typography type="link">
+        <LinkInternal href="/challenge" text="view the challenge" />
+      </Typography>
+      <Typography type="link">
+        <LinkInternal href="/(tabs)" text="return home" />
+      </Typography>
+    </Card>
   </ParallaxScrollView>
  )
 }
@@ -49,3 +51,5 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   }
 });
+
+export default DailyView;

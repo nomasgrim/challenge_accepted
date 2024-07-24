@@ -1,12 +1,14 @@
 import { Link } from 'expo-router';
 
-export type ILink = {
+type ILink = {
   href: string,
   text:string,
 }
 
-export const InternalLink = ({href, text}:ILink) => {
+const LinkInternal = ({href, text}:ILink) => {
   return (
     <Link href={href}>{text}</Link>
   );
 }
+
+export default LinkInternal;
