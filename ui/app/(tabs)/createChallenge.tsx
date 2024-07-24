@@ -4,23 +4,31 @@ import { useRouter } from 'expo-router';
 
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 
-import { Accordion } from '@/common/Accordion';
+import Accordion from '@/common/Accordion';
 import PrimaryButton from '@/common/Button';
-import { Card } from '@/common/Card';
-import { InputText } from '@/common/InputText';
+import Card from '@/common/Card';
+import InputText from '@/common/InputText';
 import Typography from '@/common/Typography';
 
 import { useTaskContext } from '@/hooks/useTaskContext';
 
 const CreateChallenge = () => {
   const router =  useRouter();
-  const [challengeName, setChallengeName] = useState('');
+
   const [challengeLength, setChallengelength] = useState('');
+  const [challengeName, setChallengeName] = useState('');
   const [task, setTask] = useState('');
+
   const { state, dispatch }:any = useTaskContext();
 
   const addTask = ():void => {
-    dispatch( {type: 'ADD_TASK', payload: {id:state.tasks.length, text:task}});
+    dispatch( {
+      type: 'ADD_TASK', 
+      payload: {id:state.tasks.length, text:task}
+    });
+
+    // clear input field now task is in state
+    setTask('');
   };
 
   

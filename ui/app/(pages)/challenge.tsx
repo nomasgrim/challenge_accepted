@@ -1,9 +1,10 @@
 import { StyleSheet, View } from 'react-native';
 
 import ParallaxScrollView from "@/components/ParallaxScrollView";
+
+import Card from "@/common/Card";
+import LinkInternal from '@/common/LinkInternal';
 import Typography from "@/common/Typography";
-import { Card } from "@/common/Card";
-import { LinkInternal } from '@/common/LinkInternal';
 
 export default function ChallangeView(){
  return (

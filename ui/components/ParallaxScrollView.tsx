@@ -7,7 +7,7 @@ import Animated, {
   useScrollViewOffset,
 } from 'react-native-reanimated';
 
-import { Card } from '@/common/Card';
+import Card from '@/common/Card';
 
 const HEADER_HEIGHT = 50;
 
