@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
   default: {
     fontSize: 16,
     lineHeight: 24,
+    paddingVertical: 5
   },
   defaultSemiBold: {
     fontSize: 16,

@@ -59,19 +59,17 @@ const CreateChallenge = () => {
         </PrimaryButton>
       </Card>
       <Accordion title={`List of tasks for ${challengeName?challengeName:'new challenge'}`}>
-        <Card style={styles.titleContainer}>
-          {challengeLength && (<Typography type="defaultSemiBold">Committing myself to the following tasks for {challengeLength} days</Typography>)}
-          { 
-            state &&
-            state.tasks.map((item:any) => item && (
-              <PrimaryButton type="link" key={item.id} onPress={()=>removeTask(item.id)}>
-                <Typography key={item.id}>
-                  {item?.text} <Icon name='trash' color='#ff0000' />
-                </Typography>
-              </PrimaryButton>
-            ))
-          } 
-        </Card>
+        {challengeLength && (<Typography type="defaultSemiBold">Committing myself to the following tasks for {challengeLength} days</Typography>)}
+        { 
+          state &&
+          state.tasks.map((item:any) => item && (
+            <PrimaryButton type="link" key={item.id} onPress={()=>removeTask(item.id)}>
+              <Typography key={item.id}>
+                {item?.text} <Icon name='trash' color='#ff0000' />
+              </Typography>
+            </PrimaryButton>
+          ))
+        } 
       </Accordion>
       <Card>
         <PrimaryButton title='accept challenge' onPress={()=>router.push("/daily")} />
@@ -83,8 +81,6 @@ const CreateChallenge = () => {
 const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
     gap: 8,
   },
 });
