@@ -11,6 +11,7 @@ import InputText from '@/common/InputText';
 import Typography from '@/common/Typography';
 
 import { useTaskContext } from '@/hooks/useTaskContext';
+import Icon from '@/common/Icon';
 
 const CreateChallenge = () => {
   const router =  useRouter();
@@ -31,6 +32,13 @@ const CreateChallenge = () => {
     setTask('');
   };
 
+  const removeTask = (id:any):void => {
+    dispatch({
+      type: 'REMOVE_TASK',
+      payload: id
+    });
+  }
+
   
   return (
     <ParallaxScrollView
@@ -44,14 +52,26 @@ const CreateChallenge = () => {
       </Card>
       <Card>
         <InputText placeholder='create new task' onChangeText={(text)=>setTask(text)} value={task} />
-        <PrimaryButton title='Add task' type="link" onPress={()=>addTask()} />
+        <PrimaryButton type="link" onPress={()=>addTask()}>
+          <Typography>
+            <Icon name='add' color='#ff0000' /> Add task
+          </Typography>
+        </PrimaryButton>
       </Card>
       <Accordion title={`List of tasks for ${challengeName?challengeName:'new challenge'}`}>
-        {challengeLength && (<Typography type="defaultSemiBold">Committing myself to the following tasks for {challengeLength} days</Typography>)}
-        { 
-          state &&
-          state.tasks.map((item:any) => item && (<Typography key={item.id}>{item?.text}</Typography>))
-        } 
+        <Card style={styles.titleContainer}>
+          {challengeLength && (<Typography type="defaultSemiBold">Committing myself to the following tasks for {challengeLength} days</Typography>)}
+          { 
+            state &&
+            state.tasks.map((item:any) => item && (
+              <PrimaryButton type="link" key={item.id} onPress={()=>removeTask(item.id)}>
+                <Typography key={item.id}>
+                  {item?.text} <Icon name='trash' color='#ff0000' />
+                </Typography>
+              </PrimaryButton>
+            ))
+          } 
+        </Card>
       </Accordion>
       <Card>
         <PrimaryButton title='accept challenge' onPress={()=>router.push("/daily")} />
@@ -63,6 +83,8 @@ const CreateChallenge = () => {
 const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
     gap: 8,
   },
 });

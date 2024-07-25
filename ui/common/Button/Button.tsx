@@ -11,11 +11,13 @@ type IButtonType = PressableProps & {
   title?: string,
   type?: string,
   textColor?:string,
+  children?: any,
 }
 
 const PrimaryButton = ({
   title,
   type='button',
+  children,
   ...rest
 }:IButtonType) => {
   const color = useThemeColor({ light: 'black', dark: 'white' }, 'text');
@@ -23,7 +25,8 @@ const PrimaryButton = ({
   return (
     // <Pressable style={[{background}, type==='button'?styles.button:styles.link]} {...rest}>
     <Pressable style={type==='button'?styles.button:styles.link} {...rest}>
-      <Typography style={{color}}>{title}</Typography>
+      {title && (<Typography style={[{color}, styles.text]}>{title}</Typography>)}
+      {children}
     </Pressable>
   )
 };
