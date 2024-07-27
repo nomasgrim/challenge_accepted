@@ -8,7 +8,7 @@ import Typography from "@/common/Typography";
 import { useGlobalContext } from '@/hooks/useGlobalContext';
 
 const ChallangeView = () => {
-  const {state, dispatch}:any = useGlobalContext();
+  const {state}:any = useGlobalContext();
 
   const listOfDays = () => {
     let days = [];
