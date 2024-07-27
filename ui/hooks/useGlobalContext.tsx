@@ -1,13 +1,17 @@
-// TaskContext.js
+// GlobalContext.js
 import { createContext, useContext, useReducer } from 'react';
 
-const TaskContext = createContext({});
+const GlobalContext = createContext({});
 
 const initialState = {
   tasks: [],
+  challenge: {
+    name: '',
+    length: 0
+  }
 };
 
-const taskReducer = (state:any, action:any) => {
+const globalReducer = (state:any, action:any) => {
   switch (action.type) {
     case 'ADD_TASK':
       return {
@@ -28,19 +32,26 @@ const taskReducer = (state:any, action:any) => {
         ...state,
         tasks: state.tasks.filter((task:any) => task.id !== action.payload),
       };
+    
+    case 'ADD_CHALLENGE':
+      return {
+        ...state,
+        challenge: action.payload
+      };
+      
     default:
       return state;
   }
 };
 
-export const TaskProvider = ({ children }:any) => {
-  const [state, dispatch] = useReducer(taskReducer, initialState);
+export const GlobalProvider = ({ children }:any) => {
+  const [state, dispatch] = useReducer(globalReducer, initialState);
 
   return (
-    <TaskContext.Provider value={{ state, dispatch }}>
+    <GlobalContext.Provider value={{ state, dispatch }}>
       {children}
-    </TaskContext.Provider>
+    </GlobalContext.Provider>
   );
 };
 
-export const useTaskContext = () => useContext(TaskContext);
+export const useGlobalContext = () => useContext(GlobalContext);
