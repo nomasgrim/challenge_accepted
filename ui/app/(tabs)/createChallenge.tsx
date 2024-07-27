@@ -10,7 +10,7 @@ import Card from '@/common/Card';
 import InputText from '@/common/InputText';
 import Typography from '@/common/Typography';
 
-import { useTaskContext } from '@/hooks/useTaskContext';
+import { useGlobalContext } from '@/hooks/useGlobalContext';
 import Icon from '@/common/Icon';
 
 type ITask = {
@@ -26,7 +26,7 @@ const CreateChallenge = () => {
   const [challengeName, setChallengeName] = useState('');
   const [task, setTask] = useState('');
 
-  const { state, dispatch }:any = useTaskContext();
+  const { state, dispatch }:any = useGlobalContext();
 
   const addTask = ():void => {
     if(!task) return;
@@ -53,8 +53,18 @@ const CreateChallenge = () => {
       type: 'REMOVE_TASK',
       payload: id
     });
-  }
+  };
 
+  const acceptChallenge = () => {
+    dispatch({
+      type: 'ADD_CHALLENGE',
+      payload: {
+        name: challengeName,
+        length: challengeLength
+      }
+    });
+    router.push("/daily");
+  };
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}>
@@ -87,7 +97,7 @@ const CreateChallenge = () => {
         } 
       </Accordion>
       <Card>
-        <PrimaryButton title='accept challenge' onPress={()=>router.push("/daily")} />
+        <PrimaryButton title='accept challenge' onPress={()=>acceptChallenge()} />
       </Card>
     </ParallaxScrollView>
   );

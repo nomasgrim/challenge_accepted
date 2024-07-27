@@ -7,17 +7,17 @@ import LinkInternal from '@/common/LinkInternal';
 import RadioButton from '@/common/Radio';
 import Typography from "@/common/Typography";
 
-import { useTaskContext } from '@/hooks/useTaskContext';
+import { useGlobalContext } from '@/hooks/useGlobalContext';
+import { useEffect } from 'react';
 
 const DailyView = () => {
- const {state, dispatch}:any = useTaskContext();
+ const {state, dispatch}:any = useGlobalContext();
 
  const toggleComplete = (id:any) => {
   dispatch({
     type: 'TOGGLE_TASK', 
     payload: id
   });
-  
  };
 
  return (
@@ -27,15 +27,15 @@ const DailyView = () => {
       <Typography type="title">Daily View</Typography>
     </Card>
     <Card>
-      <Typography>THIS LIST COMES FROM CREATE CHALLENGE VIEW</Typography>
-        { 
-          state &&
-          state.tasks.map((item:any) => item && (
-            <Typography key={item.id}>
-              <RadioButton text={item.text} onPress={()=>toggleComplete(item.id)} isChecked={item.completed} />
-            </Typography>
-          ))
-        } 
+      {state.challenge && (<Typography type="subtitle">{state.challenge.name}</Typography>)}
+      { 
+        state &&
+        state.tasks.map((item:any) => item && (
+          <Typography key={item.id}>
+            <RadioButton text={item.text} onPress={()=>toggleComplete(item.id)} isChecked={item.completed} />
+          </Typography>
+        ))
+      } 
     </Card>
     <Card>
       <Typography type="link">
