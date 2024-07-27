@@ -29,8 +29,12 @@ const CreateChallenge = () => {
   const { state, dispatch }:any = useTaskContext();
 
   const addTask = ():void => {
+    if(!task) return;
+
+    const taskId = Date.now(); // provides a unique id & timestamp
+
     const entry:ITask = {
-      id: state.tasks.length,
+      id: taskId,
       text: task,
       completed: false
     };
