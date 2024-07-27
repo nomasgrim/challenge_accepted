@@ -13,6 +13,12 @@ import Typography from '@/common/Typography';
 import { useTaskContext } from '@/hooks/useTaskContext';
 import Icon from '@/common/Icon';
 
+type ITask = {
+  id: number,
+  text: string,
+  completed: boolean
+};
+
 const CreateChallenge = () => {
   const router =  useRouter();
 
@@ -23,9 +29,15 @@ const CreateChallenge = () => {
   const { state, dispatch }:any = useTaskContext();
 
   const addTask = ():void => {
+    const entry:ITask = {
+      id: state.tasks.length,
+      text: task,
+      completed: false
+    };
+
     dispatch( {
       type: 'ADD_TASK', 
-      payload: {id:state.tasks.length, text:task}
+      payload: entry
     });
 
     // clear input field now task is in state
@@ -39,7 +51,6 @@ const CreateChallenge = () => {
     });
   }
 
-  
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}>

@@ -10,7 +10,16 @@ import Typography from "@/common/Typography";
 import { useTaskContext } from '@/hooks/useTaskContext';
 
 const DailyView = () => {
- const {state}:any = useTaskContext();
+ const {state, dispatch}:any = useTaskContext();
+
+ const toggleComplete = (id:any) => {
+  dispatch({
+    type: 'TOGGLE_TASK', 
+    payload: id
+  });
+  
+ };
+
  return (
   <ParallaxScrollView
   headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}>
@@ -23,7 +32,7 @@ const DailyView = () => {
           state &&
           state.tasks.map((item:any) => item && (
             <Typography key={item.id}>
-              <RadioButton text={item.text} />
+              <RadioButton text={item.text} onPress={()=>toggleComplete(item.id)} isChecked={item.completed} />
             </Typography>
           ))
         } 

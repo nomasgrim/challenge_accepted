@@ -3,14 +3,17 @@ import Typography from "../Typography";
 
 type IRadioProps = {
   text: string,
+  onPress: ((checked: boolean) => void) | undefined,
+  isChecked: boolean
 }
 
 const RadioButton = ({
   text,
+  ...rest
 }:IRadioProps) => {
   return (
     <Typography>
-      <BouncyCheckbox text={text} onPress={(isChecked: boolean) => {}} />
+      <BouncyCheckbox text={text} {...rest} />
       {text}
     </Typography>
   )
