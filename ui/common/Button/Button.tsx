@@ -1,7 +1,6 @@
 import {
   StyleSheet,
   Pressable,
-  Text,
   type PressableProps
 } from 'react-native';
 import Typography from '../Typography';
@@ -23,7 +22,6 @@ const PrimaryButton = ({
   const color = useThemeColor({ light: 'black', dark: 'white' }, 'text');
   const background = useThemeColor({ light: 'black', dark: 'white' }, 'background');
   return (
-    // <Pressable style={[{background}, type==='button'?styles.button:styles.link]} {...rest}>
     <Pressable style={type==='button'?styles.button:styles.link} {...rest}>
       {title && (<Typography style={[{color}, styles.text]}>{title}</Typography>)}
       {children}
