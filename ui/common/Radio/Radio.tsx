@@ -2,7 +2,7 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 import Typography from "../Typography";
 
 type IRadioProps = {
-  text: string,
+  text?: string,
   onPress: ((checked: boolean) => void) | undefined,
   isChecked: boolean
 }
@@ -12,10 +12,7 @@ const RadioButton = ({
   ...rest
 }:IRadioProps) => {
   return (
-    <Typography>
       <BouncyCheckbox text={text} {...rest} />
-      {text}
-    </Typography>
   )
 }
 

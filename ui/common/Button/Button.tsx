@@ -20,9 +20,8 @@ const PrimaryButton = ({
   ...rest
 }:IButtonType) => {
   const color = useThemeColor({ light: 'black', dark: 'white' }, 'text');
-  const background = useThemeColor({ light: 'black', dark: 'white' }, 'background');
   return (
-    <Pressable style={type==='button'?styles.button:styles.link} {...rest}>
+    <Pressable style={[{borderColor:color},type==='button'?styles.button:styles.link]} {...rest}>
       {title && (<Typography style={[{color}, styles.text]}>{title}</Typography>)}
       {children}
     </Pressable>

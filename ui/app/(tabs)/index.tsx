@@ -1,11 +1,11 @@
+import { router } from 'expo-router';
 import { StyleSheet } from 'react-native';
 
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import Typography from '@/common/Typography';
+import PrimaryButton from '@/common/Button';
 import Card from '@/common/Card';
-import InputText from '@/common/InputText';
-import LinkInternal from '@/common/LinkInternal';
-import Icon from '@/common/Icon';
+import Typography from '@/common/Typography';
+
+import ParallaxScrollView from '@/components/ParallaxScrollView';
 
 const HomeScreen = () => {
   return (
@@ -13,43 +13,26 @@ const HomeScreen = () => {
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
     >
       <Card style={styles.titleContainer}>
-        <Typography type="title">Challenge Accepted</Typography>
+        <Typography type="title">Emperic</Typography>
+      </Card>
+
+      <Card>
+        <Typography type="default">
+          The majority of gains in life, come through practical experience, and consinstency. 
+          The purpose of "Emperic", is to build habits, that contribute to building consistency,
+          so you can achieve your gains.
+        </Typography>
+      </Card>
+
+      <Card>
+        <Typography type="default">
+          Welcome to the "Emperic" app. Where you create a challenge for yourself. 
+          Made up of whatever tasks you believe you can accomplish every single day.
+        </Typography>
       </Card>
            
-      <Card style={styles.stepContainer}>
-        <Typography type="subtitle">Step 1: Create Account | Login</Typography>
-        <Typography>
-          Create an account to associate all your challenges and daily tasks to. Or login below with your credentials
-        </Typography>
-        <InputText placeholder="username" />
-        <InputText placeholder="password" />
-        <Icon name='home' color='#ff0000' />
-      </Card>
-      <Card style={styles.stepContainer}>
-        <Typography type="subtitle">Step 2: Create your Challenge & Tasks</Typography>
-        <Typography>
-          You will name your challenge and define how long you will stay commited to it.
-        </Typography>
-        <Typography>
-          You will create the tasks that you are committing yourself to everyday.
-        </Typography>
-      </Card>
-      <Card>
-        <Typography type="link">
-          <LinkInternal href="/createChallenge" text="Create Challange" />
-        </Typography>
-      </Card>
-      <Card style={styles.stepContainer}>
-        <Typography type="subtitle">Step 3: Accept your Challenge</Typography>
-        <Typography>
-          This is the commitment to yourself, to complete the tasks you just made, every single day! Now manage it.
-        </Typography>
-        <Typography type="link">
-          <LinkInternal href="/daily" text="Daily View" />
-        </Typography>
-        <Typography type="link">
-          <LinkInternal href="/challenge" text="Challenge View" />
-        </Typography>
+      <Card style={styles.titleContainer}>
+        <PrimaryButton onPress={()=>router.push('/createChallenge')} title="Create Challenge" />
       </Card>
     </ParallaxScrollView>
   );
@@ -59,6 +42,7 @@ const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     gap: 8,
   },
   stepContainer: {

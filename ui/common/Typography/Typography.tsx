@@ -36,8 +36,9 @@ const Typography = ({
 const styles = StyleSheet.create({
   default: {
     fontSize: 16,
-    lineHeight: 24,
-    paddingVertical: 5
+    paddingVertical: 15,
+    display: 'flex',
+    verticalAlign: 'middle',
   },
   defaultSemiBold: {
     fontSize: 16,
