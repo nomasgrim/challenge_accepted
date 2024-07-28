@@ -1,3 +1,4 @@
+import { useThemeColor } from '@/hooks/useThemeColor';
 import { TextInput, type TextInputProps, StyleSheet } from 'react-native';
 
 type IInputTextProps = TextInputProps & {
@@ -9,8 +10,9 @@ const InputText =({
   style,
   ...rest
 }: IInputTextProps) => {
+  const color = useThemeColor({light:'#000', dark:'#fff'}, 'text');
   return (
-    <TextInput placeholder={placeholder} style={styles.input} {...rest} />
+    <TextInput placeholder={placeholder} style={[{color, borderColor:color},styles.input]} {...rest} />
   );
 };
 

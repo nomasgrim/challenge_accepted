@@ -31,9 +31,12 @@ const DailyView = () => {
       { 
         state &&
         state.tasks.map((item:any) => item && (
-          <Typography key={item.id}>
-            <RadioButton text={item.text} onPress={()=>toggleComplete(item.id)} isChecked={item.completed} />
-          </Typography>
+          <Card key={item.id} style={styles.taskBody}>
+            <RadioButton onPress={()=>toggleComplete(item.id)} isChecked={item.completed} />
+            <Typography type="default">
+              {item.text}
+            </Typography>
+          </Card>
         ))
       } 
     </Card>
@@ -52,8 +55,12 @@ const DailyView = () => {
 const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+    justifyContent: 'center'
+  },
+  taskBody: {
+    flex:1,
+    flexDirection:'row',
+    justifyContent:'flex-start',
   },
   bodyContainer: {
     gap: 8,

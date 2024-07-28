@@ -74,12 +74,13 @@ const CreateChallenge = () => {
       <Card>
         <InputText placeholder="Name your challenge" onChangeText={(text)=>setChallengeName(text)} />
         <InputText keyboardType="numeric" placeholder="how many days" onChangeText={(number)=>setChallengelength(number)} />
+        <InputText placeholder='create new task' onChangeText={(text)=>setTask(text)} value={task} />
       </Card>
       <Card>
-        <InputText placeholder='create new task' onChangeText={(text)=>setTask(text)} value={task} />
-        <PrimaryButton type="link" onPress={()=>addTask()}>
-          <Typography>
-            <Icon name='add' color='#ff0000' /> Add task
+        <PrimaryButton type="link" onPress={()=>addTask()}  style={styles.titleContainer}>
+          <Icon name='add' style={styles.icon} />
+          <Typography type="default" style={styles.text}>
+             Add task
           </Typography>
         </PrimaryButton>
       </Card>
@@ -88,10 +89,11 @@ const CreateChallenge = () => {
         { 
           state &&
           state.tasks.map((item:any) => item && (
-            <PrimaryButton type="link" key={item.id} onPress={()=>removeTask(item.id)}>
+            <PrimaryButton type="link" key={item.id} onPress={()=>removeTask(item.id)} style={styles.titleContainer}>
               <Typography key={item.id}>
-                {item?.text} <Icon name='trash' color='#ff0000' />
+                {item?.text} 
               </Typography>
+              <Icon name='trash' color='#ff0000' />
             </PrimaryButton>
           ))
         } 
@@ -105,9 +107,21 @@ const CreateChallenge = () => {
 
 const styles = StyleSheet.create({
   titleContainer: {
-    flexDirection: 'row',
-    gap: 8,
+    flex:1,
+    flexDirection:'row',
+    alignItems:'center',
+    justifyContent:'center',
   },
+  icon: {
+    color: '#ff0000',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 0
+  },
+  text: {
+    fontSize: 16,
+  }
 });
 
 export default CreateChallenge;
