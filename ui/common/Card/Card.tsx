@@ -2,13 +2,20 @@ import { View, type ViewProps } from 'react-native';
 
 import { useThemeColor } from '@/hooks/useThemeColor';
 
-export type ThemedViewProps = ViewProps & {
+type ICarProps = ViewProps & {
   lightColor?: string;
   darkColor?: string;
 };
 
-export function ThemedView({ style, lightColor, darkColor, ...otherProps }: ThemedViewProps) {
+const Card = ({ 
+  style, 
+  lightColor, 
+  darkColor, 
+  ...otherProps }: ICarProps
+) => {
   const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
 
   return <View style={[{ backgroundColor }, style]} {...otherProps} />;
 }
+
+export default Card;
